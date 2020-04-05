@@ -1,5 +1,6 @@
 {
-    "name": "your_project/edge_auth",
+    "name": "dwelling41/edgeauth",
+    "version": "0.5.0",
     "authors": [
         {
             "name": "David",
