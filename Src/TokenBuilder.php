@@ -82,9 +82,7 @@ class TokenBuilder
      */
     function expiresInSeconds($seconds)
     {
-        $now = new \DateTime('now', new \DateTimeZone('UTC'));
-        $now->add(new \DateInterval("PT{$seconds}S"));
-        $this->token->expires = $now->format('U') * 1000;
+        $this->token->expires = round(microtime(true) * 1000) + ($seconds * 1000);
         return $this;
     }
 
@@ -102,7 +100,7 @@ class TokenBuilder
             throw new \Exception('Expiration date must be a valid date.');
         }
 
-        $this->token->expires = $expirationDate->format('U') * 1000;
+        $this->token->expires = $expirationDate->format('U.u') * 1000;
         return $this;
     }
 

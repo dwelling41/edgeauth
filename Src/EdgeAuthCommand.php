@@ -49,7 +49,7 @@ class EdgeAuthCommand
 
             $expiresAt = $parsedArgs->getOpt('expiresAt');
             if($expiresAt !== null){
-                $tokenBuilder->expiresAt(\DateTime::createFromFormat('U', floor($expiresAt / 1000)));
+                $tokenBuilder->expiresAt(\DateTime::createFromFormat('U.u', sprintf('%F', $expiresAt / 1000)));
             } else {
                 $expiresInSeconds= $parsedArgs->getOpt('expiresInSeconds');
                 if($expiresInSeconds !== null){
